@@ -555,6 +555,11 @@ export class Schema<
     return results
   }
 
+  /**
+   * 转换fieldProps的方法
+   * @param options 
+   * @returns 
+   */
   toFieldProps = (
     options?: ISchemaTransformerOptions
   ): IFieldFactoryProps<any, any> => {

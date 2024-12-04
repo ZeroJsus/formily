@@ -145,6 +145,7 @@ export function createSchemaField<
             })
       )
 
+      // 组合通过scope属性 注入的数据
       const scopeRef = computed(() => lazyMerge(options.scope, props.scope))
 
       const optionsRef = computed(() => ({

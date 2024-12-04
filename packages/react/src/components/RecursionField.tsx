@@ -11,6 +11,7 @@ import { Field } from './Field'
 import { VoidField } from './VoidField'
 
 const useFieldProps = (schema: Schema) => {
+  // 获取注入的额外的上下文信息
   const scope = useExpressionScope()
   return schema.toFieldProps({
     scope,
@@ -101,6 +102,7 @@ export const RecursionField: ReactFC<IRecursionFieldProps> = (props) => {
 
   if (!fieldSchema) return <Fragment />
 
+  // TODO: 思考是不是可以将这部分内容放到服务器进行渲染 -- 不行 业务的交给领域，样式的放给前端
   return (
     <SchemaContext.Provider value={fieldSchema}>
       {render()}

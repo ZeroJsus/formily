@@ -1,8 +1,21 @@
+/*
+ * @Description: insert description
+ * @Author: yangrongxin
+ * @Date: 2024-07-26 15:35:43
+ * @LastEditors: yangrongxin
+ * @LastEditTime: 2024-07-26 15:45:41
+ */
 import React, { forwardRef, memo, Fragment } from 'react'
 import hoistNonReactStatics from 'hoist-non-react-statics'
 import { useObserver } from './hooks/useObserver'
 import { IObserverOptions, IObserverProps, ReactFC } from './types'
 
+/**
+ * 执行组件订阅的方法
+ * @param component react function component
+ * @param options 
+ * @returns 返回记忆后的组件
+ */
 export function observer<
   P,
   Options extends IObserverOptions = IObserverOptions

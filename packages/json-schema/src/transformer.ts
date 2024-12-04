@@ -1,3 +1,6 @@
+/**
+ * 转换方法 将jsonSchema结构转换为 对应领域的最小字段模型的属性
+ */
 import { untracked, autorun, observable } from '@formily/reactive'
 import {
   isArr,
@@ -146,6 +149,12 @@ const setSchemaFieldState = (
   }
 }
 
+/**
+ * 事件编辑器中 注入上下文的位置
+ * @param field 
+ * @param options 
+ * @returns 
+ */
 const getBaseScope = (
   field: Field,
   options: ISchemaTransformerOptions = {}
@@ -197,6 +206,12 @@ const getBaseScope = (
   )
 }
 
+/**
+ * 设置组件的联动功能
+ * @param schema 
+ * @param options 
+ * @returns 
+ */
 const getBaseReactions =
   (schema: ISchema, options: ISchemaTransformerOptions) => (field: Field) => {
     setSchemaFieldState(
@@ -223,6 +238,9 @@ const getUserReactions = (
         return reaction(field, baseScope)
       }
       const { when, fulfill, otherwise, target, effects } = reaction
+      /**
+       * 动态事件的执行方法
+       */
       const run = () => {
         const $deps = getDependencies(field, reaction.dependencies)
         const $dependencies = $deps
@@ -247,6 +265,7 @@ const getUserReactions = (
       if (target) {
         reaction.effects = effects?.length ? effects : DefaultFieldEffects
       }
+      // 自动执行 $effect 的事件录入
       if (reaction.effects) {
         autorun.memo(() => {
           untracked(() => {
@@ -264,6 +283,12 @@ const getUserReactions = (
   })
 }
 
+/**
+ * 给当前的字段增加对应的响应性
+ * @param schema 
+ * @param options 
+ * @returns 
+ */
 export const transformFieldProps = (
   schema: Schema,
   options: ISchemaTransformerOptions

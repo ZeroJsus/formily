@@ -1,3 +1,10 @@
+/*
+ * @Description: 最终渲染组件的位置
+ * @Author: yangrongxin
+ * @Date: 2024-07-26 15:35:43
+ * @LastEditors: yangrongxin
+ * @LastEditTime: 2024-09-05 23:40:39
+ */
 import { inject, provide, watch, shallowRef, computed, markRaw } from 'vue-demi'
 import { GeneralField } from '@formily/core'
 import { isFn, isValid, lazyMerge } from '@formily/shared'
